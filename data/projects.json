@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Fupre Chess Player Database",
+    "thumbnail": "assets/images/fupre-chess-db.jpg",
+    "description": "Problem: scattered player records and pairings. Solution: a lightweight web app to register players, record results, and generate standings. Impact: faster tournament ops, clean export to CSV/JSON.",
+    "tech": ["JavaScript", "HTML/CSS", "LocalStorage/JSON"],
+    "live": "https://example.com/fupre-chess-db",
+    "github": "https://github.com/ClarkeTj/fupre-chess-db"
+  },
+  {
+    "title": "Proudcore Deliveries PWA",
+    "thumbnail": "assets/images/proudcore-pwa.jpg",
+    "description": "Problem: unassigned orders and manual rider dispatch. Solution: PWA with order queue and nearest-rider assignment. Impact: reduced dispatch time and higher delivery reliability.",
+    "tech": ["JS", "Service Worker", "IndexedDB", "Maps"],
+    "live": "https://example.com/proudcore",
+    "github": "https://github.com/ClarkeTj/proudcore"
+  },
+  {
+    "title": "Tactics Trainer (Mini)",
+    "thumbnail": "assets/images/tactics-trainer.jpg",
+    "description": "Problem: inconsistent daily tactics. Solution: micro-tactics widget with spaced repetition seeds. Impact: improved pattern retention and solve speed.",
+    "tech": ["JavaScript", "chess.js", "JSON"],
+    "live": "",
+    "github": "https://github.com/ClarkeTj/tactics-mini"
+  },
+  {
+    "title": "Personal Analytics Dashboard",
+    "thumbnail": "assets/images/analytics-dash.jpg",
+    "description": "Problem: multiple trackers across tools. Solution: single dashboard aggregating habits, coding time, and match results. Impact: quick weekly reviews and goal alignment.",
+    "tech": ["JS", "Charts", "CSV/JSON"],
+    "live": "",
+    "github": "https://github.com/ClarkeTj/personal-analytics"
+  }
+]

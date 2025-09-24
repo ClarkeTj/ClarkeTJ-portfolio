@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Refactor Like Endgames",
+    "date": "2025-08-20",
+    "category": "Coding",
+    "excerpt": "How simplifying positions maps to simplifying code: fewer pieces, fewer bugs.",
+    "url": "posts/post-template.html"
+  },
+  {
+    "title": "English Opening, Practical Lines",
+    "date": "2025-08-12",
+    "category": "Chess",
+    "excerpt": "My white repertoire choices that trade theory for practicality.",
+    "url": "posts/post-template.html"
+  },
+  {
+    "title": "Measuring Performance Without Lying",
+    "date": "2025-07-30",
+    "category": "Coding",
+    "excerpt": "The Lighthouse triangle: performance, accessibility, best practices.",
+    "url": "posts/post-template.html"
+  }
+]

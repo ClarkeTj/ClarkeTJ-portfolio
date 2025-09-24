@@ -1,0 +1,285 @@
+/* ===========
+   ClarkeTJ Portfolio — Styles
+   =========== */
+
+/* Theme vars (dark default) */
+:root {
+  --bg: #0E0F12;
+  --surface: #171A1F;
+  --card: #121419;
+  --text: #E6E8EC;
+  --muted: #9AA3B2;
+  --accent: #C8A44D;
+  --accent-2: #4D9AC8;
+  --focus: #C8A44D;
+  --btn-text: #111;
+  --code: #bfe2ff;
+  --ring: 2px;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* Light mode (high contrast) */
+html.light {
+  --bg: #ffffff;
+  --surface: #f6f8fb;
+  --card: #ffffff;
+  --text: #0b1220;
+  --muted: #41546d;
+  --accent: #1f3a8a;
+  --accent-2: #0f766e;
+  --focus: #1f3a8a;
+  --btn-text: #ffffff;
+  --code: #0b1220;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html, body { height: 100%; }
+html { max-width: 100%; overflow-x: hidden; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+pre { white-space: pre-wrap; }
+
+.skip-link { position: absolute; left: -999px; top: -999px; }
+.skip-link:focus { left: 12px; top: 12px; background: var(--surface); padding: 8px 12px; border-radius: 8px; }
+
+/* Sticky header */
+.site-header { position: sticky; top: 0; z-index: 999;
+  background: color-mix(in oklab, var(--bg) 86%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+  transition: box-shadow .25s ease, background .25s ease;
+}
+.site-header.scrolled { box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+.nav { max-width: 1100px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 16px; }
+.logo { font-weight: 700; letter-spacing: .5px; color: var(--text); }
+.navmenu { list-style: none; display: flex; margin: 0; padding: 0; gap: 16px; }
+.navmenu a { padding: 8px 10px; border-radius: 8px; }
+.navmenu a:focus-visible { outline: var(--ring) solid var(--focus); outline-offset: 2px; }
+.nav-toggle { display: none; background: transparent; color: var(--text);
+  border: 1px solid color-mix(in oklab, var(--text) 25%, transparent); border-radius: 8px; padding: 6px 10px; }
+
+/* Buttons */
+.btn, .btn-secondary, .btn-outline, .btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 14px; border-radius: 12px; border: 1px solid transparent;
+  font-weight: 600; cursor: pointer; transition: transform .06s ease, background .2s ease, border-color .2s ease, color .2s ease;
+}
+.btn { background: var(--accent); color: var(--btn-text); }
+.btn:hover { transform: translateY(-1px); }
+.btn-secondary { background: transparent; border-color: color-mix(in oklab, var(--accent) 40%, var(--text)); color: var(--text); }
+.btn-outline { background: transparent; border-color: color-mix(in oklab, var(--text) 25%, transparent); color: var(--text); }
+.btn-ghost { background: transparent; color: var(--text); border-color: color-mix(in oklab, var(--text) 10%, transparent); }
+.btn:focus-visible, .btn-secondary:focus-visible, .btn-outline:focus-visible, .btn-ghost:focus-visible { outline: var(--ring) solid var(--focus); outline-offset: 2px; }
+
+/* Hero */
+.hero {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  min-height: 78vh; max-width: 1100px; margin: 0 auto; padding: 24px 16px; gap: 16px;
+}
+.hero-left, .hero-right {
+  background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); overflow: clip; position: relative;
+}
+.terminal { height: 100%; display: grid; grid-template-rows: auto 1fr; }
+.terminal-header { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: #0b0d12; border-bottom: 1px solid #1d222c; }
+html.light .terminal-header { background: #e8ecf4; border-bottom-color: #c9d3e6; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.red { background: #ff5f56; } .dot.amber { background: #ffbd2e; } .dot.green { background: #27c93f; }
+.term-title { color: var(--muted); font-size: 12px; }
+.typing { margin: 0; padding: 18px; color: var(--code); max-height: 360px; overflow: hidden; }
+.hero-right { display: grid; grid-template-rows: auto 1fr; }
+.hero-copy { padding: 24px; }
+.hero-copy h1 { margin: 0 0 8px; font: 700 2rem "DM Sans", Inter, sans-serif; }
+.hero-copy .sub { color: var(--muted); margin: 0 0 16px; }
+.board-wrap { padding: 16px; display: grid; place-items: center; }
+.chessboard { width: 100%; max-width: 420px; aspect-ratio: 1/1; border-radius: 12px; border: 1px solid color-mix(in oklab, var(--text) 10%, transparent); }
+
+/* Sections */
+.section { max-width: 1100px; margin: 40px auto; padding: 0 16px; }
+.section h2 { font: 700 1.6rem "DM Sans", Inter, sans-serif; margin-bottom: 10px; }
+
+/* Persona (photos) */
+.persona .duo { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .persona .duo { grid-template-columns: 1fr 1fr; } }
+
+.portrait.card { overflow: clip; border-radius: var(--radius); box-shadow: var(--shadow);
+  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent); outline: none;
+  transition: transform .18s ease, box-shadow .2s ease;
+}
+.portrait.card:focus-visible { outline: var(--ring) solid var(--focus); outline-offset: 2px; }
+.portrait.card:hover { transform: translateY(-2px); }
+
+.portrait-media { position: relative; aspect-ratio: 4/5; background: var(--card); }
+.portrait-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform .6s ease; }
+.portrait.card:hover .portrait-media img { transform: scale(1.06); }
+
+.portrait-overlay { position: absolute; inset: 0; display: grid; place-items: end center;
+  padding: 12px; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.45) 100%);
+  opacity: 0; transition: opacity .25s ease;
+}
+html.light .portrait-overlay { background: linear-gradient(180deg, rgba(255,255,255,0) 40%, rgba(0,0,0,.18) 100%); }
+.portrait.card:hover .portrait-overlay { opacity: 1; }
+.btn-view { min-width: 88px; }
+
+.portrait-cap { padding: 10px 12px; background: var(--surface); border-top: 1px solid color-mix(in oklab, var(--text) 10%, transparent); }
+
+/* --- Lightbox (desktop-safe) --- */
+.lightbox[hidden] { display: none !important; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,.64);
+  display: grid;
+  place-items: center;
+  padding: clamp(8px, 4vw, 24px);        /* keeps margins on small & large screens */
+  overflow: auto;                         /* allow inner scroll if needed */
+}
+
+.lightbox-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+
+  /* Key constraints for desktop */
+  max-width: min(96vw, 1100px);           /* width cap */
+  max-height: min(92vh, 900px);           /* height cap so it never exceeds viewport */
+  overflow: hidden;                        /* keep rounded corners clean */
+  padding: 16px 16px 12px 16px;
+}
+
+.lightbox img {
+  width: 100%;
+  height: auto;
+  /* Make image fit both width & height limits without cropping */
+  max-height: calc(92vh - 100px);         /* subtracts padding + close button + caption */
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  border-radius: 12px;
+}
+
+.lb-close {
+  position: absolute;                     /* don’t push content down */
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+/* Caption text under image */
+#lb-cap { margin: 2px 2px 0; }
+
+/* Give even tighter bounds on very large desktops (optional) */
+@media (min-width: 1200px) {
+  .lightbox-inner { max-width: 70vw; }
+  .lightbox img    { max-height: calc(90vh - 100px); }
+}
+
+/* Projects */
+.grid-cards { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+.grid-cards > * {
+  grid-column: span 12; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+  overflow: clip; border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+  transform: translateZ(0);
+}
+@media (min-width: 720px) { .grid-cards > * { grid-column: span 6; } }
+@media (min-width: 980px) { .grid-cards > * { grid-column: span 4; } }
+
+.card { display: grid; grid-template-rows: auto 1fr; }
+.card-media { position: relative; aspect-ratio: 16/9; overflow: hidden; }
+.card-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform .5s ease; }
+.card:hover .card-media img { transform: scale(1.08) rotate(.2deg); }
+.card-body { padding: 14px; display: grid; gap: 8px; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.badge { font-size: 12px; padding: 4px 8px; border-radius: 999px; border:1px solid color-mix(in oklab, var(--text) 20%, transparent); color: var(--text); }
+.card-actions { display: flex; gap: 8px; }
+
+/* Chess panels */
+.chess-panels { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 980px) { .chess-panels { grid-template-columns: 1fr 1fr 1fr; } }
+.move-controls { display: flex; gap: 8px; margin-top: 8px; }
+.pgn-log { background: var(--surface); padding: 10px; border-radius: 8px; min-height: 48px; border: 1px dashed color-mix(in oklab, var(--text) 10%, transparent); }
+.recent-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.recent-list li { background: var(--surface); padding: 10px; border-radius: 8px; border: 1px solid color-mix(in oklab, var(--text) 10%, transparent); }
+
+/* Chart containment */
+.chart-wrap { width: 100%; max-width: 100%; height: 240px; }
+.chart-wrap canvas { width: 100% !important; height: 100% !important; display: block; }
+
+/* Puzzle */
+.puzzle-actions { display: flex; gap: 8px; margin-top: 8px; }
+#moveInput { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid color-mix(in oklab, var(--text) 20%, transparent); background: var(--card); color: var(--text); }
+
+/* Skills */
+.skills-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 840px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
+.skill-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+
+/* Contact */
+.contact-list { list-style: none; padding: 0; margin: 0 0 12px; display: flex; flex-wrap: wrap; gap: 16px; }
+.contact-form { background: var(--surface); border-radius: var(--radius); padding: 16px; border: 1px solid color-mix(in oklab, var(--text) 10%, transparent); }
+.form-row { display: grid; gap: 6px; margin-bottom: 10px; }
+input, textarea { background: var(--card); color: var(--text); border: 1px solid color-mix(in oklab, var(--text) 20%, transparent); border-radius: 8px; padding: 10px; }
+input:focus-visible, textarea:focus-visible { outline: var(--ring) solid var(--focus); outline-offset: 2px; }
+.form-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.small-note { color: var(--muted); font-size: 14px; }
+
+/* Footer */
+.site-footer { padding: 24px 16px; border-top: 1px solid color-mix(in oklab, var(--text) 10%, transparent); text-align: center; }
+.socials a { margin: 0 6px; }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in-view { opacity: 1; transform: none; }
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .card-media img, .btn, .btn-secondary, .reveal { transition: none !important; }
+}
+
+/* Mobile nav */
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; }
+  .navmenu { display: none; position: fixed; inset: 56px 12px auto 12px; background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text) 10%, transparent); border-radius: 12px; padding: 12px;
+    gap: 8px; flex-direction: column; z-index: 1000; }
+  .navmenu.open { display: flex; }
+  .nav-toggle { display: inline-flex; }
+}
+
+
+/* Static fallback board if the JS library fails */
+.chessboard.fallback {
+  background:
+    conic-gradient(#0000 25%, color-mix(in oklab, var(--text) 12%, transparent) 0) 0 0 / 12.5% 12.5%;
+  border-radius: 12px;
+}
+
+
+/* Experience */
+.experience .xp-card { padding-bottom: 8px; }
+.experience .xp-meta { padding: 14px 14px 0; }
+.experience .xp-meta h3 { margin: 0 0 4px; font: 700 1.1rem "DM Sans", Inter, sans-serif; }
+.experience .xp-points {
+  margin: 8px 14px; padding-left: 18px;
+}
+.experience .xp-points li { margin: 6px 0; }

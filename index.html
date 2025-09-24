@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ClarkeTJ</title>
+  <meta name="description" content="Tejiri Clarke — software developer and 2060-rated chess player. Projects, games, and insights that blend engineering and strategy." />
+  <link rel="canonical" href="https://example.com/" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Icons -->
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+
+  <!-- JSON-LD Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Clarke-Efayena Tejiri",
+    "jobTitle": "Web Developer",
+    "url": "https://example.com/",
+    "sameAs": [
+      "https://github.com/ClarkeTj",
+      "https://www.linkedin.com/in/your-linkedin",
+      "https://www.chess.com/member/Knytrus",
+      "https://lichess.org/@/Clarke_TJ"
+    ]
+  }
+  </script>
+<!-- chess.js (logic) -->
+<script defer src="https://cdn.jsdelivr.net/npm/chess.js@1.0.0/dist/chess.min.js"></script>
+
+<!-- chessboard.js (board UI) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+  <!-- Chart.js (bonus rating chart) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Main script -->
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Sticky header with scroll shadow -->
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Primary">
+      <a href="#" class="logo" aria-label="Home">ClarkeTJ</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="navmenu" aria-label="Open menu">☰</button>
+      <ul id="navmenu" class="navmenu">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#photos">Photos</a></li><!-- NEW -->
+        <li><a href="#chess">Chess</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="themeToggle" class="btn-outline" aria-pressed="false" aria-label="Toggle dark/light">☀</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero reveal" aria-label="Intro">
+      <div class="hero-left" aria-hidden="false">
+        <div class="terminal" aria-label="Code animation">
+          <div class="terminal-header">
+            <span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span>
+            <span class="term-title">~/TJ/openings</span>
+          </div>
+          <!-- Looping auto-typing text (script.js controls the typing) -->
+          <pre class="typing" aria-live="polite"><code></code></pre>
+          <!-- Fallback content for no-JS -->
+          <noscript>
+            <pre class="typing-fallback"><code>
+"// Hello, I'm Clarke-Efayena Tejiri.",
+  "// Web Developer • 400L Computer Science student • Fupre Chess Club Asst. Captain",
+  "// Chess.com rating: 2060",
+  "",
+  "const mindset = {",
+  "  coding: true, chess: true",
+  "};",
+  "",
+  "mindset.coding && mindset.chess",
+  "  ? console.log(\"Checkmate the impossible.\")",
+  "  : console.log(\"Strategize again...\");"
+            </code></pre>
+          </noscript>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-copy">
+          <h1 id="heroHeadline">Build. Calculate. Checkmate.</h1>
+          <p class="sub">Programming craft meets over-the-board clarity.</p>
+          <div class="cta-row">
+            <a href="#work" class="btn">View Work</a>
+            <a class="btn-secondary" target="_blank" rel="noopener" href="https://www.chess.com/member/Knytrus">Challenge Me ♟</a>
+          </div>
+        </div>
+        <div class="board-wrap" aria-hidden="true">
+          <div id="heroBoard" class="chessboard"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about reveal" id="about" aria-label="About Tejiri">
+      <h2>About</h2>
+      <p>I'm <strong>Clarke Tejiri</strong> (22), 400L Computer Science student at FUPRE, a developer who treats systems like positions on a board—evaluate, calculate, execute. I build performant, usable interfaces and robust front-end foundations.</p>
+      <p>My coding philosophy is simple: small, composable pieces; clean accessibility; data-driven decisions. Chess sharpened my pattern recognition, time management, and endgame patience—all vital in programming.</p>
+      <p><em>Fun fact:</em> I annotate my best games like code reviews—lessons baked into comments.</p>
+    </section>
+
+    <!-- PERSONA PHOTOS (NEW) -->
+    <section class="section persona reveal" id="photos" aria-label="Photos: developer and chess">
+      <div class="section-head">
+        <h2>Spotlight</h2>
+        <p class="muted">Faces to the name — code &amp; chess.</p>
+      </div>
+
+      <div class="duo">
+        <!-- Dev portrait -->
+        <figure class="portrait card" tabindex="0"
+                data-full="assets/images/dev.jpg">
+          <div class="card-media portrait-media">
+            <!-- Replace with your image. Provide a -full.jpg for lightbox if available -->
+            <picture>
+              <!-- Optional: add smaller source for mobile if you have it -->
+              <!-- <source srcset="assets/images/dev-800.webp" type="image/webp"> -->
+              <img src="assets/images/dev.jpg" alt="Portrait of Tejiri Clarke as a developer"
+                   loading="lazy" width="800" height="1000">
+            </picture>
+            <div class="portrait-overlay" aria-hidden="true">
+              <button class="btn btn-view" type="button">View</button>
+            </div>
+          </div>
+          <figcaption class="portrait-cap">
+            <strong>Developer</strong> — building elegant, accessible UIs.
+          </figcaption>
+        </figure>
+
+        <!-- Chess portrait -->
+        <figure class="portrait card" tabindex="0"
+                data-full="assets/images/chess.jpg">
+          <div class="card-media portrait-media">
+            <picture>
+              <!-- <source srcset="assets/images/chess-800.webp" type="image/webp"> -->
+              <img src="assets/images/chess.jpg" alt="Tejiri Clarke at the chessboard"
+                   loading="lazy" width="800" height="1000">
+            </picture>
+            <div class="portrait-overlay" aria-hidden="true">
+              <button class="btn btn-view" type="button">View</button>
+            </div>
+          </div>
+          <figcaption class="portrait-cap">
+            <strong>Chess</strong> — strategy under time pressure.
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Accessible lightbox (no libs) -->
+      <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" hidden>
+        <div class="lightbox-inner" role="document">
+          <button class="lb-close btn-outline" aria-label="Close image">✕</button>
+          <img id="lb-img" alt="" />
+          <p id="lb-cap" class="muted"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+<section class="section experience reveal" id="experience" aria-label="Experience">
+  <h2>Experience</h2>
+
+  <!-- YellowDotAfrica internship card -->
+  <article class="xp-card card">
+    <div class="xp-meta">
+      <h3>YellowDotAfrica — Frontend Intern</h3>
+      <p class="muted">
+        <span>Jun–Dec 2025</span> • <span>Lagos, Nigeria (Hybrid)</span>
+      </p>
+    </div>
+
+    <ul class="xp-points">
+      <!-- Keep bullets short and impact-focused. Replace with your real wins. -->
+      <li>Implemented responsive UI components in vanilla JS/CSS with WCAG AA focus.</li>
+      <li>Optimized images and caching; improved Lighthouse Performance on key pages.</li>
+      <li>Collaborated with design to standardize spacing/typography tokens across pages.</li>
+    </ul>
+
+    <div class="badges">
+      <span class="badge">HTML</span>
+      <span class="badge">CSS</span>
+      <span class="badge">JavaScript</span>
+      <span class="badge">React</span>
+    </div>
+  </article>
+</section>
+
+
+    <!-- PROJECTS -->
+    <section class="section projects reveal" id="work" aria-label="Featured Projects">
+      <div class="section-head">
+        <h2>Featured Projects</h2>
+        <p>Quality over quantity. Loaded from <code>projects.json</code>.</p>
+      </div>
+      <div id="projectsGrid" class="grid-cards" role="list"></div>
+    </section>
+
+    <!-- CHESS -->
+    <section class="section chess reveal" id="chess" aria-label="On the Board">
+      <div class="section-head">
+        <h2>On the Board</h2>
+        <p>Chess.com rating: <strong id="ratingNum">2060</strong> • Fupre Chess Club</p>
+      </div>
+
+      <div class="chess-panels">
+        <!-- Game Viewer -->
+        <article class="card" aria-label="Favorite game viewer">
+          <h3>Favorite Game (Annotated)</h3>
+          <div id="gameBoard" class="chessboard" aria-label="Chessboard"></div>
+          <div class="move-controls">
+            <button class="btn-ghost" id="firstBtn" aria-label="First move">⏮</button>
+            <button class="btn-ghost" id="prevBtn" aria-label="Previous move">◀</button>
+            <button class="btn-ghost" id="nextBtn" aria-label="Next move">▶</button>
+            <button class="btn-ghost" id="lastBtn" aria-label="Last move">⏭</button>
+          </div>
+          <div class="pgn-log" id="pgnLog" aria-live="polite"></div>
+          <noscript>
+            <p>PGN viewer requires JavaScript. Sample PGN is shown below:</p>
+            <pre>(Insert PGN here)</pre>
+          </noscript>
+        </article>
+
+        <!-- Tactics Puzzle -->
+        <article class="card" aria-label="Tactics puzzle">
+          <h3>Tactics Puzzle</h3>
+          <div id="puzzleBoard" class="chessboard"></div>
+          <p id="puzzleDesc">White to move &amp; win. Enter the best first move.</p>
+          <div class="puzzle-actions">
+            <label for="moveInput" class="sr-only">Your move (SAN)</label>
+            <input id="moveInput" inputmode="text" placeholder="e.g., Nf7+" aria-describedby="puzzleDesc" />
+            <button id="checkMoveBtn" class="btn">Check</button>
+            <button id="resetPuzzleBtn" class="btn-secondary">Reset</button>
+          </div>
+          <p id="puzzleFeedback" role="status" aria-live="polite"></p>
+        </article>
+
+        <!-- Recent Games & Rating Chart -->
+        <article class="card" aria-label="Recent games and rating timeline">
+          <h3>Recent Games</h3>
+          <ul id="recentGames" class="recent-list"></ul>
+          <h4>Rating Timeline</h4>
+          <div class="chart-wrap">
+            <canvas id="ratingChart" aria-label="Rating over time" role="img"></canvas>
+          </div>
+        </article>
+      </div>
+      <p class="small-note">Data loads from <code>data/chess_games.json</code>. See README for live API hooks (Chess.com/Lichess).</p>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills reveal" id="skills" aria-label="Skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-col">
+          <h3>Code</h3>
+          <ul class="skill-list">
+            <li><span aria-hidden="true">🟨</span> JavaScript (ES6+) — UI architecture, JSON APIs</li>
+            <li><span aria-hidden="true">🐍</span> Python — data scripts, automation</li>
+            <li><span aria-hidden="true">🔥</span> Firebase — auth + hosting (small apps)</li>
+            <li><span aria-hidden="true">📦</span> Git/GitHub — CI, issues, releases</li>
+            <li><span aria-hidden="true">♿</span> Accessibility — WCAG AA, ARIA, keyboard UX</li>
+            <li><span aria-hidden="true">⚡</span> Performance — images, code-split, caching</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h3>Chess</h3>
+          <ul class="skill-list">
+            <li><span aria-hidden="true">♟</span> Tactics — pattern speed & accuracy</li>
+            <li><span aria-hidden="true">📚</span> Openings — English, Scandinavian</li>
+            <li><span aria-hidden="true">🏁</span> Endgames — rook and minor piece technique</li>
+            <li><span aria-hidden="true">🧠</span> Calculation — candidate moves & pruning</li>
+            <li><span aria-hidden="true">🗓</span> Prep — opponent model & practical choices</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="section blog reveal" id="blog" aria-label="Blog and Insights">
+      <div class="section-head">
+        <h2>Blog & Insights</h2>
+        <p>Short notes on code lessons and annotated games (from <code>posts.json</code>).</p>
+      </div>
+      <div id="blogList" class="grid-cards"></div>
+      <div class="cta-row">
+        <a class="btn-secondary" href="blog.html">See all posts</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact reveal" id="contact" aria-label="Contact">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><a href="mailto:clarketejiri@gmail.com">clarketejiri@gmail.com</a></li>
+        <li><a target="_blank" rel="noopener" href="https://github.com/ClarkeTj">GitHub</a></li>
+        <li><a target="_blank" rel="noopener" href="https://www.chess.com/member/Knytrus">Chess.com</a></li>
+        <li><a target="_blank" rel="noopener" href="https://lichess.org/@/Clarke_TJ">Lichess</a></li>
+      </ul>
+
+      <!-- Note: mailto fallback kept -->
+      <form class="contact-form" action="mailto:clarketejiri@gmail.com" method="post" enctype="text/plain" aria-label="Contact form">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input id="name" name="name" required />
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn" type="submit">Send</button>
+          <a class="btn-secondary" href="resume.pdf" download>Download Résumé</a>
+        </div>
+        <p class="small-note">If email client doesn’t open, copy: <a href="mailto:clarketejiri@gmail.com">clarketejiri@gmail.com</a></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>© <span id="year"></span> Clarke Tejiri • Developed by Tejiri Clarke</p>
+    <div class="socials">
+      <a aria-label="GitHub" href="https://github.com/ClarkeTj" target="_blank" rel="noopener">GH</a>
+      <a aria-label="LinkedIn" href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener">IN</a>
+      <a aria-label="Chess.com" href="https://www.chess.com/member/Knytrus" target="_blank" rel="noopener">C♟</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "favorite_pgn": "1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6 6. Bg5 e6 7. f4 Be7 8. Qf3 Qc7 9. O-O-O Nbd7 10. Bd3 b5 11. Rhe1 Bb7 12. Qg3 O-O-O 13. e5 dxe5 14. fxe5 Nc5 15. Bxb5 axb5 16. Ndxb5 Rxd1+ 17. Rxd1 Nfe4 18. Nxe4 Nxe4 19. Qe3 Bxg5 20. Nd6+ Nxd6 21. Qxg5 Nc4 22. Qxg7 Rd8 23. Rxd8+ Qxd8 24. Qxf7 Qd2+ 25. Kb1 Qd1+ 26. Ka2 Bd5 27. Qe8+ Kc7 28. Qe7+ Kc6 29. Qe8+ Kc5 30. b4+ Kd4 31. Qh8 Qc1 32. Qh4+ Kc3 33. Qg3+ Ne3+ 34. Qxe3+ Qxe3 35. b5 Qc1#",
+  "puzzle": {
+    "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/2NP1N2/PPP2PPP/R1BQ1RK1 w kq - 0 1",
+    "best": "Nf7+"
+  },
+  "recent_games": [
+    { "date": "2025-08-30", "opponent": "A. Lopez", "result": "Win", "site": "Chess.com", "time_control": "10|0", "rating": 2055 },
+    { "date": "2025-08-28", "opponent": "K. Adeyemi", "result": "Draw", "site": "Lichess", "time_control": "5|3", "rating": 2058 },
+    { "date": "2025-08-27", "opponent": "M. Singh", "result": "Loss", "site": "Chess.com", "time_control": "3|0", "rating": 2052 }
+  ],
+  "rating_timeline": [
+    { "date": "2025-08-01", "rating": 2020 },
+    { "date": "2025-08-10", "rating": 2038 },
+    { "date": "2025-08-18", "rating": 2050 },
+    { "date": "2025-08-25", "rating": 2058 },
+    { "date": "2025-08-30", "rating": 2060 }
+  ]
+}
