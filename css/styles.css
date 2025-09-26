@@ -37,22 +37,25 @@ html.light {
 *,
 *::before,
 *::after { box-sizing: border-box; }
+
 html, body { height: 100%; }
+
+/* Hard stop any accidental horizontal scrolls */
 html { max-width: 100%; overflow-x: hidden; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
+body { margin: 0; overflow-x: hidden;
+  background: var(--bg); color: var(--text);
   font: 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;
 }
+
+main, header, footer { overflow-x: clip; } /* contain child overflow without adding horizontal bars */
 
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
-pre { white-space: pre-wrap; }
+/* Wrap long code lines everywhere */
+pre { white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; }
 
 .skip-link { position: absolute; left: -999px; top: -999px; }
 .skip-link:focus { left: 12px; top: 12px; background: var(--surface); padding: 8px 12px; border-radius: 8px; }
@@ -99,7 +102,16 @@ html.light .terminal-header { background: #e8ecf4; border-bottom-color: #c9d3e6;
 .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 .dot.red { background: #ff5f56; } .dot.amber { background: #ffbd2e; } .dot.green { background: #27c93f; }
 .term-title { color: var(--muted); font-size: 12px; }
-.typing { margin: 0; padding: 18px; color: var(--code); max-height: 360px; overflow: hidden; }
+
+/* Typing area — now mobile-safe (scrolls vertically, no horizontal overflow) */
+.typing {
+  margin: 0; padding: 18px; color: var(--code);
+  max-height: 360px; overflow: auto; /* default on desktop */
+  overscroll-behavior: contain;
+}
+.typing::-webkit-scrollbar { width: 8px; }
+.typing::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--text) 20%, transparent); border-radius: 8px; }
+
 .hero-right { display: grid; grid-template-rows: auto 1fr; }
 .hero-copy { padding: 24px; }
 .hero-copy h1 { margin: 0 0 8px; font: 700 2rem "DM Sans", Inter, sans-serif; }
@@ -138,68 +150,22 @@ html.light .portrait-overlay { background: linear-gradient(180deg, rgba(255,255,
 
 /* --- Lightbox (desktop-safe) --- */
 .lightbox[hidden] { display: none !important; }
-
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(0,0,0,.64);
-  display: grid;
-  place-items: center;
-  padding: clamp(8px, 4vw, 24px);        /* keeps margins on small & large screens */
-  overflow: auto;                         /* allow inner scroll if needed */
-}
-
-.lightbox-inner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background: var(--surface);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
+.lightbox { position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.64);
+  display: grid; place-items: center; padding: clamp(8px, 4vw, 24px); overflow: auto; }
+.lightbox-inner { position: relative; display: flex; flex-direction: column; gap: 8px;
+  background: var(--surface); border-radius: 16px; box-shadow: var(--shadow);
   border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
-
-  /* Key constraints for desktop */
-  max-width: min(96vw, 1100px);           /* width cap */
-  max-height: min(92vh, 900px);           /* height cap so it never exceeds viewport */
-  overflow: hidden;                        /* keep rounded corners clean */
-  padding: 16px 16px 12px 16px;
-}
-
-.lightbox img {
-  width: 100%;
-  height: auto;
-  /* Make image fit both width & height limits without cropping */
-  max-height: calc(92vh - 100px);         /* subtracts padding + close button + caption */
-  object-fit: contain;
-  object-position: center;
-  display: block;
-  border-radius: 12px;
-}
-
-.lb-close {
-  position: absolute;                     /* don’t push content down */
-  top: 10px;
-  right: 10px;
-  z-index: 2;
-}
-
-/* Caption text under image */
+  max-width: min(96vw, 1100px); max-height: min(92vh, 900px); overflow: hidden; padding: 16px 16px 12px 16px; }
+.lightbox img { width: 100%; height: auto; max-height: calc(92vh - 100px); object-fit: contain; object-position: center; display: block; border-radius: 12px; }
+.lb-close { position: absolute; top: 10px; right: 10px; z-index: 2; }
 #lb-cap { margin: 2px 2px 0; }
-
-/* Give even tighter bounds on very large desktops (optional) */
-@media (min-width: 1200px) {
-  .lightbox-inner { max-width: 70vw; }
-  .lightbox img    { max-height: calc(90vh - 100px); }
-}
+@media (min-width: 1200px) { .lightbox-inner { max-width: 70vw; } .lightbox img { max-height: calc(90vh - 100px); } }
 
 /* Projects */
 .grid-cards { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
 .grid-cards > * {
   grid-column: span 12; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
-  overflow: clip; border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
-  transform: translateZ(0);
+  overflow: clip; border: 1px solid color-mix(in oklab, var(--text) 10%, transparent); transform: translateZ(0);
 }
 @media (min-width: 720px) { .grid-cards > * { grid-column: span 6; } }
 @media (min-width: 980px) { .grid-cards > * { grid-column: span 4; } }
@@ -236,12 +202,6 @@ html.light .portrait-overlay { background: linear-gradient(180deg, rgba(255,255,
 
 /* Contact */
 .contact-list { list-style: none; padding: 0; margin: 0 0 12px; display: flex; flex-wrap: wrap; gap: 16px; }
-.contact-form { background: var(--surface); border-radius: var(--radius); padding: 16px; border: 1px solid color-mix(in oklab, var(--text) 10%, transparent); }
-.form-row { display: grid; gap: 6px; margin-bottom: 10px; }
-input, textarea { background: var(--card); color: var(--text); border: 1px solid color-mix(in oklab, var(--text) 20%, transparent); border-radius: 8px; padding: 10px; }
-input:focus-visible, textarea:focus-visible { outline: var(--ring) solid var(--focus); outline-offset: 2px; }
-.form-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.small-note { color: var(--muted); font-size: 14px; }
 
 /* Footer */
 .site-footer { padding: 24px 16px; border-top: 1px solid color-mix(in oklab, var(--text) 10%, transparent); text-align: center; }
@@ -253,19 +213,26 @@ input:focus-visible, textarea:focus-visible { outline: var(--ring) solid var(--f
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .card-media img, .btn, .btn-secondary, .reveal { transition: none !important; }
+  .card-media img, .btn, .btn-secondary, .reveal, .typing { transition: none !important; }
 }
 
-/* Mobile nav */
+/* Mobile nav + mobile hero improvements */
 @media (max-width: 720px) {
-  .hero { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: 1fr; gap: 12px; padding: 20px 12px; min-height: auto; }
+  .hero-right { order: 2; }
+  .hero-left { order: 1; }
+  .typing {
+    max-height: clamp(200px, 44vh, 360px); /* lets the code box grow on small screens */
+    overflow: auto;                         /* scroll vertically instead of hiding */
+  }
+  .board-wrap { padding: 12px; }
+  .chessboard { max-width: min(380px, 100%); }
   .navmenu { display: none; position: fixed; inset: 56px 12px auto 12px; background: var(--surface);
     border: 1px solid color-mix(in oklab, var(--text) 10%, transparent); border-radius: 12px; padding: 12px;
-    gap: 8px; flex-direction: column; z-index: 1000; }
+    gap: 8px; flex-direction: column; z-index: 1000; max-width: calc(100vw - 24px); }
   .navmenu.open { display: flex; }
   .nav-toggle { display: inline-flex; }
 }
-
 
 /* Static fallback board if the JS library fails */
 .chessboard.fallback {
@@ -274,12 +241,40 @@ input:focus-visible, textarea:focus-visible { outline: var(--ring) solid var(--f
   border-radius: 12px;
 }
 
-
 /* Experience */
 .experience .xp-card { padding-bottom: 8px; }
 .experience .xp-meta { padding: 14px 14px 0; }
 .experience .xp-meta h3 { margin: 0 0 4px; font: 700 1.1rem "DM Sans", Inter, sans-serif; }
-.experience .xp-points {
-  margin: 8px 14px; padding-left: 18px;
-}
+.experience .xp-points { margin: 8px 14px; padding-left: 18px; }
 .experience .xp-points li { margin: 6px 0; }
+
+
+
+
+
+/* ===== Game Embeds ===== */
+.game-panels{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: var(--space-4, 1rem);
+}
+@media (max-width: 900px){
+  .game-panels{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 640px){
+  .game-panels{ grid-template-columns: 1fr; }
+}
+.game-card .game-embed{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1; /* square view; adjust to 16/9 if preferred */
+  border-radius: var(--radius-2xl, 16px);
+  overflow: hidden;
+  background: var(--surface-2, #111);
+  border: 1px solid var(--border, rgba(255,255,255,.08));
+}
+.game-card .game-embed iframe{
+  position:absolute; inset:0; width:100%; height:100%; border:0;
+}
+.game-card .game-actions { margin-top: .75rem; display:flex; justify-content:flex-end; }
+.game-card h3 { margin-bottom:.5rem; }

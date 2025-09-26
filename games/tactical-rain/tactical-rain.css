@@ -1,0 +1,227 @@
+
+/*
+  File: tactical-rain.css
+  Author: ChatGPT (GPT-5 Thinking)
+  Date: 2025-09-25
+  Purpose: Styles for Tactical Rain. Mobile-first, theme-aware, fully scoped under #tr-root.
+*/
+
+/* Theme tokens (default dark) */
+:root {
+  --tr-bg: #0b0c10;
+  --tr-panel: #11131a;
+  --tr-text: #e6e6ea;
+  --tr-muted: #a1a8b8;
+  --tr-accent: #60a5fa;
+  --tr-good: #34d399;
+  --tr-bad: #ef4444;
+  --tr-border: #1f2330;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --tr-bg: #f7f7fb;
+    --tr-panel: #ffffff;
+    --tr-text: #0f172a;
+    --tr-muted: #6b7280;
+    --tr-accent: #2563eb;
+    --tr-good: #16a34a;
+    --tr-bad: #dc2626;
+    --tr-border: #e6e8ef;
+    color-scheme: light;
+  }
+}
+
+/* respect data-theme on <html> */
+html[data-theme="light"] :root, html[data-theme="light"] {
+  --tr-bg: #f7f7fb;
+  --tr-panel: #ffffff;
+  --tr-text: #0f172a;
+  --tr-muted: #6b7280;
+  --tr-accent: #2563eb;
+  --tr-good: #16a34a;
+  --tr-bad: #dc2626;
+  --tr-border: #e6e8ef;
+  color-scheme: light;
+}
+html[data-theme="dark"] :root, html[data-theme="dark"] {
+  --tr-bg: #0b0c10;
+  --tr-panel: #11131a;
+  --tr-text: #e6e6ea;
+  --tr-muted: #a1a8b8;
+  --tr-accent: #60a5fa;
+  --tr-good: #34d399;
+  --tr-bad: #ef4444;
+  --tr-border: #1f2330;
+  color-scheme: dark;
+}
+
+/* App layout */
+#tr-root {
+  min-height: 100svh;
+  background: var(--tr-bg);
+  color: var(--tr-text);
+  font-family: system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, sans-serif;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+}
+
+#tr-root * { box-sizing: border-box; }
+
+#tr-root .tr-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .75rem;
+  padding: .75rem 1rem;
+  max-width: 1024px; margin: 0 auto;
+}
+#tr-root .tr-brand { display:flex; align-items:center; gap:.5rem; }
+#tr-root .tr-logo { width:32px; height:32px; }
+#tr-root .tr-svg-accent { fill: var(--tr-accent); opacity:.25; }
+#tr-root .tr-svg-core { fill: var(--tr-accent); opacity:.9; }
+#tr-root .tr-title { font-size: 1.125rem; margin:0; }
+#tr-root .tr-controls { display:flex; align-items:center; gap:.5rem; flex-wrap: wrap; }
+#tr-root .tr-toggle input { display:none; }
+#tr-root .tr-toggle span {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:2.25rem; height:2.25rem; border-radius:.5rem;
+  background: var(--tr-panel); border:1px solid var(--tr-border);
+}
+#tr-root .tr-toggle input:checked + span { outline:2px solid var(--tr-accent); }
+
+#tr-root .tr-btn {
+  background: var(--tr-accent); color: white; border: none;
+  padding: .6rem .85rem; border-radius: .6rem; cursor: pointer; font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+}
+#tr-root .tr-btn.tr-ghost { background: transparent; color: var(--tr-text); border:1px solid var(--tr-border); }
+#tr-root .tr-btn:focus-visible { outline:2px solid var(--tr-accent); outline-offset:2px; }
+
+#tr-root .tr-hud {
+  display:flex; align-items:center; justify-content:center; gap: 1.25rem;
+  padding: .25rem 1rem .75rem;
+  max-width: 1024px; margin: 0 auto; flex-wrap: wrap;
+}
+#tr-root .tr-hud-item { background: var(--tr-panel); border:1px solid var(--tr-border); padding:.4rem .6rem; border-radius:.5rem; color: var(--tr-muted); }
+
+#tr-root .tr-board {
+  position: relative;
+  max-width: 1024px; margin: 0 auto;
+  padding: 0 1rem 1rem;
+  display:grid; gap:.5rem;
+}
+
+#tr-root .tr-lanes {
+  position: relative;
+  height: 56vh;
+  min-height: 360px;
+  border: 1px dashed var(--tr-border);
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,.02), transparent 35%);
+}
+html[data-theme="light"] #tr-root .tr-lanes {
+  background: linear-gradient(180deg, rgba(0,0,0,.03), transparent 35%);
+}
+
+#tr-root .tr-lane {
+  position: relative;
+  border-right: 1px dashed var(--tr-border);
+}
+#tr-root .tr-lane:last-child { border-right: none; }
+
+#tr-root .tr-piece {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: -64px; /* spawn above */
+  width: 56px; height: 56px;
+  display: grid; place-items:center;
+  background: var(--tr-panel);
+  border: 1px solid var(--tr-border);
+  border-radius: .75rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,.3);
+  transition: box-shadow .2s, transform .1s;
+  touch-action: none;
+}
+#tr-root .tr-piece.tr-selected { outline: 2px solid var(--tr-accent); }
+#tr-root .tr-piece svg .tr-svg-core { fill: var(--tr-accent); }
+#tr-root .tr-piece svg .tr-svg-accent { fill: var(--tr-muted); }
+
+#tr-root .tr-bins {
+  display:grid; grid-template-columns: repeat(4, 1fr); gap:.5rem;
+  margin-top: .75rem;
+}
+#tr-root .tr-bin {
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  background: var(--tr-panel); color: var(--tr-text);
+  border:1px solid var(--tr-border); border-radius:.75rem; padding:.6rem .5rem;
+  cursor: pointer; user-select:none;
+}
+#tr-root .tr-bin:focus-visible { outline:2px solid var(--tr-accent); outline-offset:2px; }
+#tr-root .tr-bin .tr-icon { width:28px; height:28px; }
+#tr-root .tr-bin.success { box-shadow: inset 0 0 0 3px var(--tr-good); }
+#tr-root .tr-bin.fail { box-shadow: inset 0 0 0 3px var(--tr-bad); }
+
+#tr-root .tr-a11y-instructions { text-align:center; color: var(--tr-muted); padding: .25rem 1rem 1rem; }
+
+#tr-root .tr-overlay {
+  position: fixed; inset: 0; display:grid; place-items:center;
+  background: rgba(0,0,0,.5);
+}
+html[data-theme="light"] #tr-root .tr-overlay { background: rgba(0,0,0,.35); }
+#tr-root .tr-modal {
+  background: var(--tr-panel);
+  border: 1px solid var(--tr-border);
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  width: min(90vw, 420px);
+  text-align:center;
+}
+
+#tr-root .tr-footer {
+  text-align:center; color: var(--tr-muted); padding:.75rem 1rem;
+}
+
+/* Desktop tweaks */
+@media (min-width: 860px) {
+  #tr-root .tr-lanes { height: 60vh; min-height: 440px; }
+}
+
+
+/*
+  File: tactical-rain.css
+  Author: ChatGPT (GPT-5 Thinking)
+  Date: 2025-09-25
+  Purpose: Styles for Tactical Rain. Mobile-first, theme-aware, fully scoped under #tr-root.
+*/
+
+/* …existing styles… */
+
+#tr-root .tr-overlay {
+  position: fixed; inset: 0; display:grid; place-items:center;
+  background: rgba(0,0,0,.5);
+}
+/* ⬇️ Ensure overlay truly hides when the hidden attribute is set */
+#tr-root .tr-overlay[hidden] { display: none !important; }
+
+html[data-theme="light"] #tr-root .tr-overlay { background: rgba(0,0,0,.35); }
+#tr-root .tr-modal {
+  position: relative;
+  background: var(--tr-panel);
+  border: 1px solid var(--tr-border);
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  width: min(90vw, 420px);
+  text-align:center;
+}
+#tr-root .tr-close {
+  position:absolute; top:.5rem; right:.5rem;
+  width:2rem; height:2rem; border-radius:.5rem;
+  background: transparent; color: var(--tr-text);
+  border:1px solid var(--tr-border); cursor:pointer; font-size:1.25rem; line-height:1;
+}
+
+/* …rest of your styles… */

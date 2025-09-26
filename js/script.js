@@ -1,6 +1,3 @@
-/* ===========
-   ClarkeTJ Portfolio — Script
-   =========== */
 
 (function () {
   const $ = (sel, el = document) => el.querySelector(sel);
@@ -55,50 +52,75 @@
   }, { threshold: 0.2 });
   revealEls.forEach(el => io && io.observe(el));
 
-  /* Looping auto-typing in hero terminal */
-  const typingEl = $(".typing code");
+  /* ==========================
+   HERO AUTO-TYPING 
+   ========================== */
+(() => {
+  const typingEl = document.querySelector(".typing");
+  if (!typingEl) return;
+
+  const codeEl = typingEl.querySelector("code");
+
+  // Your lines (edit freely)
   const typingLines = [
-"// Hello, I'm Clarke-Efayena Tejiri.",
-  "// Web Developer • 400L Computer Science student • Fupre Chess Club Asst. Captain",
-  "// Chess.com rating: 2060",
-  "const mindset = {",
-  "  coding: true, chess: true",
-  "};",
-  "mindset.coding && mindset.chess",
-  "  ? console.log(\"Checkmate the impossible.\")",
-  "  : console.log(\"Strategize again...\");"
+    "// Hello, I'm Clarke-Efayena Tejiri.",
+    "// Web Developer • 400L Computer Science student • Fupre Chess Club Asst. Captain",
+    "// Chess.com rating: 2060",
+    "",
+    "const mindset = {",
+    "  coding: true, chess: true",
+    "};",
+    "",
+    "mindset.coding && mindset.chess",
+    '  ? console.log("Checkmate the impossible.")',
+    '  : console.log("Strategize again...");'
   ];
-  const typingText = typingLines.join("\n");
-  const TYPE_SPEED = 28, HOLD_AFTER_TYPE = 1400, HOLD_AFTER_CLEAR = 500;
-  function typeLoop() {
-    if (!typingEl) return;
-    let i = 0; typingEl.textContent = "";
-    const tick = () => {
-      if (i <= typingText.length) { typingEl.textContent = typingText.slice(0, i++); setTimeout(tick, TYPE_SPEED); }
-      else { setTimeout(() => { typingEl.textContent = ""; setTimeout(typeLoop, HOLD_AFTER_CLEAR); }, HOLD_AFTER_TYPE); }
-    };
-    tick();
-  }
-  typeLoop();
 
-  /* Subtle hero chessboard animation */
-  let heroBoard;
-  try {
-    if (window.Chessboard) {
-      heroBoard = Chessboard("heroBoard", { position: "start", draggable: false });
-      let flip = false;
-      setInterval(() => { if (!heroBoard) return; heroBoard.orientation(flip ? "white" : "black"); flip = !flip; }, 3000);
-    }
-  } catch {}
+  // Typing speeds
+  const TYPE_MS = 18;       // per character
+  const LINE_PAUSE = 500;   // gap between lines
+  const LOOP_PAUSE = 900;   // gap at the end before restarting
 
-  // If chessboard.js didn't load, mark the boards as static fallbacks
-(function ensureBoardFallback() {
-  if (!window.Chessboard) {
-    ["heroBoard", "gameBoard", "puzzleBoard"].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.classList.add("fallback");
+  let li = 0;  // line index
+  let ci = 0;  // char index
+
+  function scrollToBottom() {
+    // Run after the DOM paints, so the scrollHeight is accurate
+    requestAnimationFrame(() => {
+      typingEl.scrollTop = typingEl.scrollHeight;
     });
   }
+
+  function typeNext() {
+    if (li >= typingLines.length) {
+      // loop
+      return setTimeout(() => {
+        li = 0; ci = 0;
+        codeEl.textContent = "";
+        scrollToBottom();
+        typeNext();
+      }, LOOP_PAUSE);
+    }
+
+    const line = typingLines[li];
+
+    if (ci < line.length) {
+      // type char-by-char
+      codeEl.textContent += line.charAt(ci++);
+      // add newline if we just finished a line
+      if (ci === line.length) codeEl.textContent += "\n";
+      scrollToBottom();
+      return setTimeout(typeNext, TYPE_MS);
+    }
+
+    // next line
+    ci = 0; li++;
+    setTimeout(typeNext, LINE_PAUSE);
+  }
+
+  // init
+  codeEl.textContent = "";
+  typeNext();
 })();
 
 
@@ -139,14 +161,12 @@
   }
 
   /* Chess Data */
-  let favPGN = "", puzzle = { fen: "", best: "Nf7+" }, recent = [], ratingSeries = [];
+  let  recent = [], ratingSeries = [];
 
   async function loadChess() {
     try {
       const res = await fetch("data/chess_games.json", { cache: "no-store" });
       const data = await res.json();
-      favPGN = data.favorite_pgn || "";
-      puzzle = data.puzzle || puzzle;
       recent = data.recent_games || [];
       ratingSeries = data.rating_timeline || [];
 
@@ -155,7 +175,7 @@
         ratingEl.textContent = ratingSeries[ratingSeries.length - 1].rating;
       }
 
-      renderRecent(); renderChart(); initViewer(); initPuzzle();
+      renderRecent(); renderChart(); 
     } catch (e) { console.warn("Chess data failed.", e); }
   }
 
@@ -181,49 +201,6 @@
       options: { responsive: true, maintainAspectRatio: false,
         scales: { y: { suggestedMin: Math.min(...data) - 20, suggestedMax: Math.max(...data) + 20 } },
         plugins: { legend: { display: false } } }
-    });
-  }
-
-  /* Game Viewer */
-  let gameBoard, game, moves = [], moveIdx = 0;
-
-  function initViewer() {
-    if (!window.Chess || !window.Chessboard) return;
-    game = new Chess();
-    try { game.loadPgn(favPGN); moves = game.history({ verbose: true }); }
-    catch { favPGN = "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 *"; game = new Chess(); game.loadPgn(favPGN); moves = game.history({ verbose: true }); }
-    game.reset();
-    gameBoard = Chessboard("gameBoard", { position: "start", draggable: false });
-    moveIdx = 0; updatePgnLog();
-
-    $("#firstBtn")?.addEventListener("click", () => { game.reset(); moveIdx = 0; gameBoard.position(game.fen()); updatePgnLog(); });
-    $("#prevBtn")?.addEventListener("click", () => { if (moveIdx>0) { game.undo(); moveIdx--; gameBoard.position(game.fen()); updatePgnLog(); }});
-    $("#nextBtn")?.addEventListener("click", () => { if (moveIdx<moves.length) { game.move(moves[moveIdx]); moveIdx++; gameBoard.position(game.fen()); updatePgnLog(); }});
-    $("#lastBtn")?.addEventListener("click", () => { while (moveIdx<moves.length) { game.move(moves[moveIdx++]); } gameBoard.position(game.fen()); updatePgnLog(); });
-  }
-  function updatePgnLog() { const log = $("#pgnLog"); if (!log || !game) return; log.textContent = game.pgn(); }
-
-  /* Puzzle */
-  let puzzleBoard, puzzleGame;
-  function initPuzzle() {
-    if (!window.Chess || !window.Chessboard) return;
-    puzzleGame = new Chess(puzzle.fen || "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/2NP1N2/PPP2PPP/R1BQ1RK1 w kq - 0 1");
-    puzzleBoard = Chessboard("puzzleBoard", { position: puzzleGame.fen(), draggable: false });
-
-    $("#checkMoveBtn")?.addEventListener("click", () => {
-      const input = $("#moveInput"); const feedback = $("#puzzleFeedback");
-      if (!input || !feedback) return;
-      const guess = input.value.trim(); if (!guess) return;
-      const legal = puzzleGame.moves({ verbose: true }).map(m => m.san);
-      if (!legal.includes(guess)) { feedback.textContent = "That move isn't legal in this position. Try again."; return; }
-      feedback.textContent = (guess === (puzzle.best || "Nf7+")) ? "Correct! Nice calculation." : "Not the best move. Look for forcing moves.";
-    });
-
-    $("#resetPuzzleBtn")?.addEventListener("click", () => {
-      puzzleGame = new Chess(puzzle.fen);
-      puzzleBoard.position(puzzleGame.fen());
-      const feedback = $("#puzzleFeedback"); if (feedback) feedback.textContent = "";
-      const input = $("#moveInput"); if (input) input.value = "";
     });
   }
 

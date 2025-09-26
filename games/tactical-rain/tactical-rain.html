@@ -1,0 +1,114 @@
+<!--
+  File: tactical-rain.html
+  Author: ChatGPT (GPT-5 Thinking)
+  Date: 2025-09-25
+  Purpose: Entry point for the "Tactical Rain" browser reaction game.
+-->
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tactical Rain</title>
+  <meta name="description" content="Sort falling chess pieces into the right bins before they hit the ground.">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="preload" href="tactical-rain.css" as="style">
+  <link rel="stylesheet" href="tactical-rain.css">
+  <script defer src="tactical-rain.js"></script>
+</head>
+<body>
+  <div id="tr-root" class="tr-app" aria-live="polite">
+    <header class="tr-header">
+      <div class="tr-brand">
+        <svg class="tr-logo" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="22" class="tr-svg-accent"></circle>
+          <path d="M24 8l10 16H14L24 8z" class="tr-svg-core"></path>
+        </svg>
+        <h1 class="tr-title">Tactical Rain</h1>
+      </div>
+      <div class="tr-controls">
+        <button id="tr-start" class="tr-btn tr-primary" aria-label="Start">Start</button>
+        <button id="tr-pause" class="tr-btn tr-ghost" aria-label="Pause">Pause</button>
+        <button id="tr-restart" class="tr-btn" aria-label="Restart">Restart</button>
+        <label class="tr-toggle" title="Toggle sound">
+          <input id="tr-sound" type="checkbox" aria-label="Toggle sound effects" checked>
+          <span>🔊</span>
+        </label>
+        <button id="tr-theme" class="tr-btn tr-ghost" aria-label="Toggle theme">🌓</button>
+      </div>
+    </header>
+
+    <section class="tr-hud" role="status" aria-live="polite">
+      <div class="tr-hud-item">Score: <span id="tr-score">0</span></div>
+      <div class="tr-hud-item">Wave: <span id="tr-wave">1</span></div>
+      <div class="tr-hud-item">Lives: <span id="tr-lives">3</span></div>
+      <div class="tr-hud-item">Best: <span id="tr-best">0</span></div>
+    </section>
+
+    <main class="tr-board" aria-label="Falling lanes area">
+      <div class="tr-lanes">
+        <div class="tr-lane" data-lane="0" aria-label="Lane 1"></div>
+        <div class="tr-lane" data-lane="1" aria-label="Lane 2"></div>
+        <div class="tr-lane" data-lane="2" aria-label="Lane 3"></div>
+        <div class="tr-lane" data-lane="3" aria-label="Lane 4"></div>
+      </div>
+
+      <div class="tr-bins" role="group" aria-label="Sorting bins">
+        <button class="tr-bin" data-bin="pawn" aria-label="Pawn bin (Key 1)">
+          <svg viewBox="0 0 64 64" class="tr-icon" aria-hidden="true">
+            <circle cx="32" cy="24" r="10" class="tr-svg-core"></circle>
+            <rect x="22" y="36" width="20" height="10" class="tr-svg-accent"></rect>
+          </svg>
+          <span>1</span>
+        </button>
+        <button class="tr-bin" data-bin="knight" aria-label="Knight bin (Key 2)">
+          <svg viewBox="0 0 64 64" class="tr-icon" aria-hidden="true">
+            <path d="M38 14l-8 6-4 8 2 10h14l-2-10 4-6-6-8z" class="tr-svg-core"></path>
+            <rect x="20" y="44" width="24" height="8" class="tr-svg-accent"></rect>
+          </svg>
+          <span>2</span>
+        </button>
+        <button class="tr-bin" data-bin="bishop" aria-label="Bishop bin (Key 3)">
+          <svg viewBox="0 0 64 64" class="tr-icon" aria-hidden="true">
+            <path d="M32 10c8 6 10 14 0 22-10-8-8-16 0-22z" class="tr-svg-core"></path>
+            <rect x="22" y="44" width="20" height="8" class="tr-svg-accent"></rect>
+          </svg>
+          <span>3</span>
+        </button>
+        <button class="tr-bin" data-bin="rook" aria-label="Rook bin (Key 4)">
+          <svg viewBox="0 0 64 64" class="tr-icon" aria-hidden="true">
+            <rect x="20" y="12" width="24" height="12" class="tr-svg-core"></rect>
+            <rect x="18" y="24" width="28" height="22" class="tr-svg-core"></rect>
+            <rect x="22" y="46" width="20" height="8" class="tr-svg-accent"></rect>
+          </svg>
+          <span>4</span>
+        </button>
+      </div>
+    </main>
+
+    <section class="tr-a11y-instructions">
+      <p>Controls: Tap a falling piece, then tap a bin. Keyboard: press <kbd>1</kbd>, <kbd>2</kbd>, <kbd>3</kbd>, <kbd>4</kbd> to sort the lowest piece to that bin.</p>
+    </section>
+
+    <div id="tr-overlay" class="tr-overlay" role="dialog" aria-modal="true" aria-labelledby="tr-over-title" hidden>
+      <div class="tr-modal">
+        <button id="tr-over-close" class="tr-close" aria-label="Close dialog">×</button>
+        <h2 id="tr-over-title">Game Over</h2>
+        <p>Your score: <strong id="tr-over-score">0</strong></p>
+        <p>High score: <strong id="tr-over-best">0</strong></p>
+        <button id="tr-over-restart" class="tr-btn tr-primary">Play Again</button>
+      </div>
+    </div>
+
+    <footer class="tr-footer">
+      <small>Sort the rain of chess pieces into the right bins before they hit the ground.</small>
+    </footer>
+  </div>
+
+  <!-- Integration: 
+  Link: <a href="/games/tactical-rain/tactical-rain.html">Play Tactical Rain</a> 
+  Embed: <iframe src="/games/tactical-rain/tactical-rain.html" width="600" height="500"></iframe>
+  -->
+</body>
+</html>

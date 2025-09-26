@@ -1,0 +1,81 @@
+
+<!--
+  File: chess-adventure.html
+  Author: ChatGPT (GPT-5 Thinking)
+  Date: 2025-09-25
+  Purpose: Entry for the Interactive Chess Adventure puzzle game.
+-->
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive Chess Adventure</title>
+  <meta name="description" content="Guide the knight to the target using legal moves, beat par, and clear levels.">
+  <meta name="color-scheme" content="light dark" />
+
+  <link rel="preload" href="chess-adventure.css" as="style">
+  <link rel="stylesheet" href="chess-adventure.css">
+  <script defer src="chess-adventure.js"></script>
+</head>
+<body>
+  <div id="ida-root" class="ida-app" aria-live="polite">
+    <header class="ida-header">
+      <div class="ida-brand">
+        <svg class="ida-logo" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="22" class="ida-svg-accent"></circle>
+          <path d="M24 8l8 14-8 14-8-14 8-14z" class="ida-svg-core"></path>
+        </svg>
+        <h1 class="ida-title">Interactive Chess Adventure</h1>
+      </div>
+      <div class="ida-controls">
+        <button id="ida-restart" class="ida-btn" aria-label="Restart level (R)">Restart</button>
+        <button id="ida-undo" class="ida-btn ida-ghost" aria-label="Undo last move (U)">Undo</button>
+        <button id="ida-next" class="ida-btn ida-primary" aria-label="Next level">Next</button>
+        <button id="ida-hint" class="ida-btn ida-ghost" aria-label="Hint (2 per level)">Hint (2)</button>
+        <label class="ida-toggle" title="Toggle sound">
+          <input id="ida-sound" type="checkbox" aria-label="Toggle sound" checked>
+          <span>🔊</span>
+        </label>
+        <button id="ida-theme" class="ida-btn ida-ghost" aria-label="Toggle theme">🌓</button>
+      </div>
+    </header>
+
+    <section class="ida-hud" role="status" aria-live="polite">
+      <div class="ida-hud-item">Level: <span id="ida-level">1</span>/6</div>
+      <div class="ida-hud-item">Moves: <span id="ida-moves">0</span> / <span id="ida-par">0</span> (par)</div>
+      <div class="ida-hud-item">Limit: <span id="ida-limit">0</span></div>
+      <div class="ida-hud-item">Best: <span id="ida-best">—</span></div>
+    </section>
+
+    <main class="ida-stage">
+      <div id="ida-board" class="ida-board" role="grid" aria-label="Knight puzzle board"></div>
+      <p class="ida-instructions">
+        Tap the knight, then a highlighted square. Keyboard: arrows move focus, <kbd>Enter</kbd> to move. <kbd>R</kbd>=restart, <kbd>U</kbd>=undo.
+      </p>
+    </main>
+
+    <div id="ida-overlay" class="ida-overlay" role="dialog" aria-modal="true" aria-labelledby="ida-over-title" hidden>
+      <div class="ida-modal">
+        <button id="ida-over-close" class="ida-close" aria-label="Close dialog">×</button>
+        <h2 id="ida-over-title">Level Complete!</h2>
+        <p>Moves used: <strong id="ida-over-moves">0</strong> (par: <strong id="ida-over-par">0</strong>)</p>
+        <p>Best record: <strong id="ida-over-best">—</strong></p>
+        <div class="ida-modal-actions">
+          <button id="ida-over-next" class="ida-btn ida-primary">Next Level</button>
+          <button id="ida-over-retry" class="ida-btn">Replay Level</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="ida-footer">
+      <small>Knight moves only. Reach the target before you run out of moves.</small>
+    </footer>
+  </div>
+
+  <!-- Integration: 
+  Link: <a href="/games/chess-adventure/chess-adventure.html">Play Chess Adventure</a> 
+  Embed: <iframe src="/games/chess-adventure/chess-adventure.html" width="600" height="500"></iframe>
+  -->
+</body>
+</html>

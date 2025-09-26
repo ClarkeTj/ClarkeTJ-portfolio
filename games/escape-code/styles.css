@@ -1,0 +1,100 @@
+/*
+MIT License
+Game: Escape the Code — Styles
+Author: ChatGPT (GPT-5 Thinking) • Date: 2025-09-25 • File: styles.css
+Integration: Scoped under #ec-root to avoid collisions. Uses CSS variables and prefers-color-scheme. Honors [data-theme] on <html>.
+*/
+
+/* Theme vars */
+:root {
+  --ec-bg: #0b0d10;
+  --ec-text: #e7eef7;
+  --ec-card: #141922;
+  --ec-muted: #9fb2c8;
+  --ec-accent: #5dd4ff;
+  --ec-good: #79e08f;
+  --ec-bad: #ff6b6b;
+  --ec-border: #263041;
+  --ec-shadow: 0 8px 24px rgba(0,0,0,.35);
+  --ec-focus: 0 0 0 3px rgba(93,212,255,.35);
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --ec-bg: #f7fafc;
+    --ec-text: #0b0d10;
+    --ec-card: #ffffff;
+    --ec-muted: #4a6077;
+    --ec-accent: #006d90;
+    --ec-good: #0a8f3b;
+    --ec-bad: #b00020;
+    --ec-border: #d8e1ec;
+    --ec-shadow: 0 8px 24px rgba(0,0,0,.08);
+    --ec-focus: 0 0 0 3px rgba(0,109,144,.25);
+  }
+}
+/* Respect explicit data-theme on <html> */
+html[data-theme="dark"] {
+  --ec-bg: #0b0d10; --ec-text:#e7eef7; --ec-card:#141922; --ec-muted:#9fb2c8; --ec-accent:#5dd4ff;
+  --ec-good:#79e08f; --ec-bad:#ff6b6b; --ec-border:#263041; --ec-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+html[data-theme="light"] {
+  --ec-bg:#f7fafc; --ec-text:#0b0d10; --ec-card:#ffffff; --ec-muted:#4a6077; --ec-accent:#006d90;
+  --ec-good:#0a8f3b; --ec-bad:#b00020; --ec-border:#d8e1ec; --ec-shadow:0 8px 24px rgba(0,0,0,.08);
+}
+
+#ec-root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; color: var(--ec-text); background: var(--ec-bg); min-height: 100svh; display:flex; flex-direction:column; align-items:center; }
+.ec-wrap { padding: 12px; }
+.ec-header, .ec-card, .ec-footer, .ec-hud { width: 100%; max-width: 1024px; }
+.ec-header { display:flex; align-items:center; gap:12px; margin:8px 0; }
+.ec-back { border:1px solid var(--ec-border); background:transparent; color:var(--ec-text); border-radius:10px; padding:.5rem .6rem; box-shadow:var(--ec-shadow); }
+.ec-back:focus { outline: none; box-shadow: var(--ec-focus); }
+.ec-titles h1 { margin:0; font-size:1.25rem; }
+.ec-titles p { margin:.15rem 0 0; color:var(--ec-muted); font-size:.9rem; }
+.ec-indicators { margin-left:auto; display:flex; gap:6px; }
+.ec-dot { width:10px; height:10px; border-radius:999px; background:transparent; border:2px solid var(--ec-border); }
+.ec-dot.ec-active { background: var(--ec-accent); border-color: var(--ec-accent); }
+
+.ec-hud { display:flex; gap:16px; margin:6px 0 12px; color:var(--ec-muted); font-size:.95rem; }
+.ec-card { background: var(--ec-card); border:1px solid var(--ec-border); border-radius:14px; padding:14px; box-shadow: var(--ec-shadow); }
+
+.ec-stage[hidden], #ec-complete[hidden] { display:none !important; }
+
+.ec-help { color:var(--ec-muted); margin:.25rem 0 .75rem; }
+
+.ec-simon { display:grid; grid-template-columns:repeat(2,minmax(100px,1fr)); gap:10px; margin:10px 0; }
+.ec-pad { aspect-ratio:1/1; border-radius:12px; border:1px solid var(--ec-border); box-shadow:var(--ec-shadow); }
+.ec-pad0 { background: #ff6b6b; }
+.ec-pad1 { background: #ffd166; }
+.ec-pad2 { background: #06d6a0; }
+.ec-pad3 { background: #118ab2; }
+.ec-pad.ec-flash { filter: brightness(1.4) saturate(1.25); transform: scale(1.02); transition: transform .12s; }
+
+.ec-cta, .ec-ghost, .ec-opt { border-radius:10px; padding:.6rem .9rem; border:1px solid var(--ec-border); cursor:pointer; }
+.ec-cta { background: var(--ec-accent); color: #fff; border-color: transparent; }
+.ec-ghost { background: transparent; color: var(--ec-text); }
+.ec-cta:focus, .ec-ghost:focus, .ec-opt:focus { outline: none; box-shadow: var(--ec-focus); }
+
+.ec-code { background:#0a0f14; color:#cce7ff; border-radius:10px; padding:10px; overflow:auto; border:1px solid var(--ec-border); }
+html[data-theme="light"] .ec-code { background:#f0f6ff; color:#001a2b; }
+.ec-options { display:flex; gap:8px; margin:.6rem 0; flex-wrap:wrap; }
+.ec-opt { background: var(--ec-card); color: var(--ec-text); }
+.ec-opt.ec-correct { border-color: var(--ec-good); }
+.ec-opt.ec-wrong { border-color: var(--ec-bad); }
+
+.ec-maze { display:grid; grid-template-columns: repeat(5, 1fr); gap:6px; margin:.6rem 0; touch-action: manipulation; }
+.ec-cell { width: 100%; aspect-ratio:1/1; border-radius:8px; background:#0e1420; border:1px solid var(--ec-border); display:grid; place-items:center; font-weight:700; }
+html[data-theme="light"] .ec-cell { background:#eef4ff; }
+.ec-wall { background: linear-gradient(135deg,#30394a,#1d2432); }
+html[data-theme="light"] .ec-wall { background: linear-gradient(135deg,#d8e1ec,#c9d5e6); }
+.ec-start { outline:2px dashed var(--ec-accent); }
+.ec-exit { outline:3px solid var(--ec-good); }
+.ec-hero { background: radial-gradient(circle at 50% 40%, #ffd166, #ef476f); color:#0b0d10; }
+
+.ec-footer { display:flex; gap:8px; justify-content:center; margin:12px 0 28px; flex-wrap:wrap; }
+.ec-complete { text-align:center; padding:24px 8px; }
+.ec-scoreline { color:var(--ec-muted); margin:.25rem 0 1rem; }
+
+/* Desktop tweaks */
+@media (min-width: 720px) {
+  .ec-simon { grid-template-columns:repeat(4, 120px); }
+}
