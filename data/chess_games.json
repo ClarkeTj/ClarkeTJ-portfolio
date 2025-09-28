@@ -1,14 +1,35 @@
 {
   "recent_games": [
-    { "result": "Win",  "opponent": "A. Lopez",  "date": "2025-08-30", "site": "Chess.com", "time_control": "10|0", "rating": 2055 },
-    { "result": "Draw", "opponent": "K. Adeyemi","date": "2025-08-28", "site": "Lichess",   "time_control": "5|3",  "rating": 2058 },
-    { "result": "Loss", "opponent": "M. Singh",  "date": "2025-08-27", "site": "Chess.com", "time_control": "3|0",  "rating": 2052 }
+    { "result": "Loss",  "opponent": "HisChannelOnly1",  "date": "2025-09-24", "site": "Chess.com", "time_control": "10|0", "rating": 2059 },
+    { "result": "Win", "opponent": "Allfather10","date": "2025-09-23", "site": "Chess.com",   "time_control": "10|0",  "rating": 2059 },
+    { "result": "Win", "opponent": "Perdorues4",  "date": "2025-09-22", "site": "Chess.com", "time_control": "10|0",  "rating": 2051 }
   ],
   "rating_timeline": [
-    { "date": "2025-08-20", "rating": 2042 },
-    { "date": "2025-08-24", "rating": 2049 },
-    { "date": "2025-08-27", "rating": 2052 },
-    { "date": "2025-08-28", "rating": 2058 },
-    { "date": "2025-08-30", "rating": 2055 }
+    { "date": "2025-08-13", "rating": 1600 },
+    { "date": "2025-08-13", "rating": 1900 },
+    { "date": "2025-08-14", "rating": 1920 },
+    { "date": "2025-08-15", "rating": 1935 },
+    { "date": "2025-08-16", "rating": 1940 },
+    { "date": "2025-08-17", "rating": 1950 },
+    { "date": "2025-08-18", "rating": 1960 },
+    { "date": "2025-08-19", "rating": 1970 },
+    { "date": "2025-08-20", "rating": 1980 },
+    { "date": "2025-08-21", "rating": 1990 },
+    { "date": "2025-09-05", "rating": 2000 },
+    { "date": "2025-09-06", "rating": 2010 },
+    { "date": "2025-09-07", "rating": 2020 },
+    { "date": "2025-09-08", "rating": 2030 },
+    { "date": "2025-09-09", "rating": 2040 },
+    { "date": "2025-09-10", "rating": 2050 },
+    { "date": "2025-09-11", "rating": 1982 },
+    { "date": "2025-09-12", "rating": 2001 },
+    { "date": "2025-09-13", "rating": 2015 },
+    { "date": "2025-09-14", "rating": 2035 },
+    { "date": "2025-09-21", "rating": 2060 },
+    { "date": "2025-09-25", "rating": 1998 },
+    { "date": "2025-09-26", "rating": 2004 },
+    { "date": "2025-09-27", "rating": 2021 },
+    { "date": "2025-09-28", "rating": 2040 },
+    { "date": "2025-09-30", "rating": 2059 }
   ]
 }

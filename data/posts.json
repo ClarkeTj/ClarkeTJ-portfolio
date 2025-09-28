@@ -1,23 +1,16 @@
 [
   {
     "title": "Refactor Like Endgames",
-    "date": "2025-08-20",
+    "date": "2025-09-26",
     "category": "Coding",
-    "excerpt": "How simplifying positions maps to simplifying code: fewer pieces, fewer bugs.",
-    "url": "posts/post-template.html"
+    "excerpt": "In chess, the endgame is where clarity shines — fewer pieces on the board, cleaner lines to calculate, and precision matters most. I see coding refactors the same way. When a messy codebase gets simplified, functions become sharper, dependencies lighter, and bugs harder to hide. Just like exchanging pieces to reach a winning endgame, every redundant loop or duplicate function you remove brings the “position” of your code closer to elegance. This post explores how the discipline of simplifying board positions can teach us to simplify codebases — and why fewer moving parts often means stronger, more reliable solutions.",
+    "url": "posts/codeBlog.html"
   },
   {
     "title": "English Opening, Practical Lines",
-    "date": "2025-08-12",
+    "date": "2025-09-25",
     "category": "Chess",
-    "excerpt": "My white repertoire choices that trade theory for practicality.",
-    "url": "posts/post-template.html"
-  },
-  {
-    "title": "Measuring Performance Without Lying",
-    "date": "2025-07-30",
-    "category": "Coding",
-    "excerpt": "The Lighthouse triangle: performance, accessibility, best practices.",
-    "url": "posts/post-template.html"
+    "excerpt": "Not every chess player wants to memorize mountains of theory. Sometimes, the smartest move is to play lines that keep things practical, forcing your opponent to think rather than recall. That’s exactly why I chose the English Opening as my white weapon. In this blog, I break down the lines I trust most — not the deepest engine-approved novelties, but the ones that keep me comfortable while keeping opponents under pressure. It’s about steering the game into positions where understanding beats rote memory, and where preparation meets creativity.",
+    "url": "posts/chessBlog.html"
   }
 ]

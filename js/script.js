@@ -66,11 +66,11 @@
     "// Hello, I'm Clarke-Efayena Tejiri.",
     "// Web Developer • 400L Computer Science student • Fupre Chess Club Asst. Captain",
     "// Chess.com rating: 2060",
-    "",
+    " " ,
     "const mindset = {",
     "  coding: true, chess: true",
     "};",
-    "",
+    " ",
     "mindset.coding && mindset.chess",
     '  ? console.log("Checkmate the impossible.")',
     '  : console.log("Strategize again...");'
@@ -266,3 +266,36 @@
   /* Init data */
   loadProjects(); loadChess(); loadPosts();
 })();
+
+
+// Utility: get correct base path for JSON depending on folder depth
+function getBasePath() {
+  if (window.location.pathname.includes("/posts/")) {
+    return "../data/"; // if inside /posts/
+  }
+  return "data/"; // root
+}
+
+// Only run projects fetch if #projectsGrid exists
+const projectsGrid = document.getElementById("projectsGrid");
+if (projectsGrid) {
+  fetch(getBasePath() + "projects.json")
+    .then(res => res.json())
+    .then(data => {
+      console.log("Projects loaded:", data);
+      // renderProjects(data);
+    })
+    .catch(err => console.error("Projects failed to load:", err));
+}
+
+// Only run chess fetch if #recentGames or #ratingChart exists
+const chessSection = document.getElementById("recentGames") || document.getElementById("ratingChart");
+if (chessSection) {
+  fetch(getBasePath() + "chess_games.json")
+    .then(res => res.json())
+    .then(data => {
+      console.log("Chess data loaded:", data);
+      // renderChess(data);
+    })
+    .catch(err => console.error("Chess data failed:", err));
+}

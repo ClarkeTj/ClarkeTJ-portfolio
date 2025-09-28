@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refactor Like Endgames</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script defer src="/js/script.js"></script>
+</head>
+<body>
+
+     <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Primary">
+      <a href="#" class="logo" aria-label="Home">ClarkeTJ</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="navmenu" aria-label="Open menu">☰</button>
+      <ul id="navmenu" class="navmenu">
+        <li><a href="../index.html">Home</a></li>
+      </ul>
+      <button id="themeToggle" class="btn-outline" aria-pressed="false" aria-label="Toggle dark/light">☀</button>
+    </nav>
+  </header>
+  
+  <main class="section blog-post">
+    <h1>Refactor Like Endgames</h1>
+    <p class="muted">August 20, 2025 • Coding</p>
+
+    <p>In chess, the endgame is a phase of clarity: fewer pieces, straightforward plans, and precision above all else. Refactoring code feels remarkably similar. When you strip away clutter, reduce complexity, and focus on essentials, your code becomes easier to navigate, maintain, and extend.</p>
+
+    <h2>1. Simplification as Power</h2>
+    <p>In the endgame, masters often trade down into positions where they can outplay their opponent with a small advantage. Similarly, in coding, simplifying functions, breaking down bloated classes, and consolidating logic reduces the surface area for bugs.</p>
+
+    <h2>2. Reducing Redundancy</h2>
+    <p>A cluttered position on the board invites mistakes; so does duplicated code. By eliminating repetitive loops and refactoring similar logic into reusable functions, you minimize mental overhead.</p>
+
+    <pre><code>// Instead of three similar functions
+function formatUserName() {...}
+function formatCustomerName() {...}
+function formatAdminName() {...}
+
+// Refactor into one
+function formatName(type, name) {...}</code></pre>
+
+    <h2>3. Precision Over Brute Force</h2>
+    <p>Endgames reward accuracy, not speed. In coding, too, “quick fixes” often create more problems than they solve. Refactoring demands patience — unit tests, clean commits, and clarity in naming conventions.</p>
+
+    <blockquote>A precise refactor today saves countless blunders tomorrow.</blockquote>
+
+    <h2>4. Knowing When to Stop</h2>
+    <p>In chess, simplifying too much can throw away winning chances. Likewise, over-refactoring can waste time or reduce performance. The art lies in knowing what to simplify, and what to keep intact.</p>
+
+    <h2>Conclusion</h2>
+    <p>Endgames sharpen a player’s understanding of the game’s essence. Refactoring sharpens a coder’s relationship with their codebase. Both are lessons in restraint, clarity, and precision.</p>
+  </main>
+</body>
+</html>

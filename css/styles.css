@@ -172,7 +172,7 @@ html.light .portrait-overlay { background: linear-gradient(180deg, rgba(255,255,
 
 .card { display: grid; grid-template-rows: auto 1fr; }
 .card-media { position: relative; aspect-ratio: 16/9; overflow: hidden; }
-.card-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform .5s ease; }
+.card-media img { width: 100%; height: 100%; object-fit: contain; transform: scale(1.04); transition: transform .5s ease; }
 .card:hover .card-media img { transform: scale(1.08) rotate(.2deg); }
 .card-body { padding: 14px; display: grid; gap: 8px; }
 .badges { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -190,10 +190,6 @@ html.light .portrait-overlay { background: linear-gradient(180deg, rgba(255,255,
 /* Chart containment */
 .chart-wrap { width: 100%; max-width: 100%; height: 240px; }
 .chart-wrap canvas { width: 100% !important; height: 100% !important; display: block; }
-
-/* Puzzle */
-.puzzle-actions { display: flex; gap: 8px; margin-top: 8px; }
-#moveInput { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid color-mix(in oklab, var(--text) 20%, transparent); background: var(--card); color: var(--text); }
 
 /* Skills */
 .skills-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
@@ -278,3 +274,85 @@ html.light .portrait-overlay { background: linear-gradient(180deg, rgba(255,255,
 }
 .game-card .game-actions { margin-top: .75rem; display:flex; justify-content:flex-end; }
 .game-card h3 { margin-bottom:.5rem; }
+
+
+/* ======================
+   HOBBIES STYLES
+======================= */
+#hobbies .hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+#hobbies .hobby-card {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  transition: transform .2s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+/* Hover / tap glow */
+#hobbies .hobby-card:active,
+#hobbies .hobby-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Accent themes + glow */
+#hobbies .hobby-card.coding {
+  border-left: 5px solid #3cb371;
+}
+#hobbies .hobby-card.coding:hover,
+#hobbies .hobby-card.coding:active {
+  box-shadow: 0 0 20px #3cb371;
+}
+
+#hobbies .hobby-card.chess {
+  border-left: 5px solid #daa520;
+}
+#hobbies .hobby-card.chess:hover,
+#hobbies .hobby-card.chess:active {
+  box-shadow: 0 0 20px #daa520;
+}
+
+#hobbies .hobby-card.movies {
+  border-left: 5px solid #1e90ff;
+}
+#hobbies .hobby-card.movies:hover,
+#hobbies .hobby-card.movies:active {
+  box-shadow: 0 0 20px #1e90ff;
+}
+
+#hobbies .hobby-card.anime {
+  border-left: 5px solid #ff4500;
+}
+#hobbies .hobby-card.anime:hover,
+#hobbies .hobby-card.anime:active {
+  box-shadow: 0 0 20px #ff4500;
+}
+
+
+/* Projects + game cards only */
+.projects .card-media img,
+.game-card .game-embed iframe,
+.game-card .card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* good for project/game thumbnails */
+  transform: scale(1.04);
+  transition: transform .5s ease;
+}
+
+/* Spotlight portraits keep cover fit */
+.portrait-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* ✅ fixes squashed look */
+  transform: scale(1.02);
+  transition: transform .6s ease;
+}
+
