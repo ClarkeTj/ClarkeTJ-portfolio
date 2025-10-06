@@ -16,11 +16,11 @@
   "github": "https://clarketj.github.io/fupreChessWebTJ/"
   },
   {
-    "title": "Proudcore Deliveries PWA",
-    "thumbnail": "assets/images/proudcore-pwa.jpg",
-    "description": "Problem: unassigned orders and manual rider dispatch. Solution: PWA with order queue and nearest-rider assignment. Impact: reduced dispatch time and higher delivery reliability.",
-    "tech": ["JS", "Service Worker", "IndexedDB", "Maps"],
-    "live": "https://example.com/proudcore",
-    "github": "https://github.com/ClarkeTj/proudcore"
+    "title": "Proudcore",
+    "thumbnail": "assets/images/proudcore.png",
+    "description": "Proudcore is a professional solar and inverter company providing reliable installation, maintenance, and energy optimization services. The website showcases its range of solar panels, inverters, and sustainable power systems designed to help homes and businesses achieve energy independence and reduce electricity costs.",
+    "tech": ["HTML/CSS", "JavaScript", "EmailJs"],
+    "live": "https://clarketj.github.io/proudcore-web/",
+    "github": "https://clarketj.github.io/proudcore-web/"
   }
 ]
