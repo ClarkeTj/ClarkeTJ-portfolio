@@ -16,8 +16,8 @@
   "github": "https://clarketj.github.io/fupreChessWebTJ/"
   },
   {
-    "title": "Proudcore",
-    "thumbnail": "assets/images/proudcore.png",
+    "title": "Proudcore LTD",
+    "thumbnail": "assets/images/proudcoreltd.png",
     "description": "Proudcore is a professional solar and inverter company providing reliable installation, maintenance, and energy optimization services. The website showcases its range of solar panels, inverters, and sustainable power systems designed to help homes and businesses achieve energy independence and reduce electricity costs.",
     "tech": ["HTML/CSS", "JavaScript", "EmailJs"],
     "live": "https://clarketj.github.io/proudcore-web/",

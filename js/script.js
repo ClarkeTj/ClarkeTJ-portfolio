@@ -65,7 +65,7 @@
   const typingLines = [
     "// Hello, I'm Clarke-Efayena Tejiri.",
     "// Web Developer • 400L Computer Science student • Fupre Chess Club Asst. Captain",
-    "// Chess.com rating: 2060",
+    "// Chess.com rating: 2066",
     " " ,
     "const mindset = {",
     "  coding: true, chess: true",
