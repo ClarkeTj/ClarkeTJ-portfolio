@@ -12,8 +12,8 @@
   "thumbnail": "assets/images/fcc.png",
   "description": "Platform for Fupre Chess Club — includes player profiles, tournaments, match pairings, standings, and highlights. Built to engage members, track games, and showcase club activities online.",
   "tech": ["JS", "JSON", "Responsive UI", "Chess API"],
-  "live": "https://clarketj.github.io/fupreChessWebTJ/",
-  "github": "https://clarketj.github.io/fupreChessWebTJ/"
+  "live": "https://clarketj.github.io/FupreChessWeb/",
+  "github": "https://clarketj.github.io/FupreChessWeb/"
   },
   {
     "title": "Proudcore LTD",
