@@ -83,7 +83,7 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; }
 }
 .btn { background: var(--accent); color: var(--btn-text); }
 .btn:hover { transform: translateY(-1px); }
-.btn-secondary { background: transparent; border-color: color-mix(in oklab, var(--accent) 40%, var(--text)); color: var(--text); }
+.btn-secondary { margin-top: 10px; background: transparent; border-color: color-mix(in oklab, var(--accent) 40%, var(--text)); color: var(--text); }
 .btn-outline { background: transparent; border-color: color-mix(in oklab, var(--text) 25%, transparent); color: var(--text); }
 .btn-ghost { background: transparent; color: var(--text); border-color: color-mix(in oklab, var(--text) 10%, transparent); }
 .btn:focus-visible, .btn-secondary:focus-visible, .btn-outline:focus-visible, .btn-ghost:focus-visible { outline: var(--ring) solid var(--focus); outline-offset: 2px; }
