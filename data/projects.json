@@ -3,7 +3,7 @@
     "title": "Fupre Chess Analytics",
     "thumbnail": "assets/images/fupreCA.png",
     "description": "Problem: scattered player records and ratings. Solution: a lightweight web app to register players, record results, and generate player ratings. Impact: faster tournament ops, clean export to CSV/JSON.",
-    "tech": ["JavaScript", "HTML/CSS", "LocalStorage/JSON"],
+    "tech": ["JavaScript", "HTML/CSS", "LocalStorage/JSON", "Chess API"],
     "live": "https://clarketj.github.io/Fupre-Chess-Analytics/",
     "github": "https://clarketj.github.io/Fupre-Chess-Analytics/"
   },
@@ -11,9 +11,9 @@
   "title": "Fupre Chess Club",
   "thumbnail": "assets/images/fcc.png",
   "description": "Platform for Fupre Chess Club — includes player profiles, tournaments, match pairings, standings, and highlights. Built to engage members, track games, and showcase club activities online.",
-  "tech": ["JS", "JSON", "Responsive UI", "Chess API"],
-  "live": "https://clarketj.github.io/FupreChessWeb/",
-  "github": "https://clarketj.github.io/FupreChessWeb/"
+  "tech": ["HTML/CSS", "LocalStorage/JSON", "JavaScript"],
+  "live": "https://fuprechessclub.github.io/",
+  "github": "https://fuprechessclub.github.io/" 
   },
   {
     "title": "Proudcore LTD",
