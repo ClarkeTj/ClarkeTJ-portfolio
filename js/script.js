@@ -65,7 +65,7 @@
   const typingLines = [
     "// Hello, I'm Clarke-Efayena Tejiri.",
     "// Web Developer • 400L Computer Science student • Fupre Chess Club Asst. Captain",
-    "// Chess.com rating: 2066",
+    "// Chess.com rating: 2076",
     " " ,
     "const mindset = {",
     "  coding: true, chess: true",
@@ -77,7 +77,7 @@
   ];
 
   // Typing speeds
-  const TYPE_MS = 18;       // per character
+  const TYPE_MS = 20;       // per character
   const LINE_PAUSE = 500;   // gap between lines
   const LOOP_PAUSE = 900;   // gap at the end before restarting
 
