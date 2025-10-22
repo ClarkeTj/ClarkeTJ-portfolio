@@ -8,6 +8,8 @@
   <meta name="description" content="Tejiri Clarke — software developer and 2060-rated chess player. Projects, games, and insights that blend engineering and strategy." />
   <link rel="canonical" href="https://example.com/" />
 
+          <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -60,7 +62,7 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button id="themeToggle" class="btn-outline" aria-pressed="false" aria-label="Toggle dark/light">☀</button>
+      <button id="themeToggle" class="btn-outline" aria-pressed="false" aria-label="Toggle dark/light"><i class="fa-solid fa-sun"></i></button>
     </nav>
   </header>
 
@@ -98,7 +100,7 @@
           <p class="sub">Programming craft meets over-the-board clarity.</p>
           <div class="cta-row">
             <a href="#work" class="btn">View Work</a>
-            <a class="btn-secondary" target="_blank" rel="noopener" href="https://www.chess.com/member/Knytrus">Challenge Me ♟</a>
+            <a class="btn-secondary" target="_blank" rel="noopener" href="https://www.chess.com/member/Knytrus">Challenge Me <i class="fa-solid fa-chess-king" style="color:#facc15"></i></a>
           </div>
         </div>
 
@@ -136,19 +138,19 @@
     <h2 class="section-title">Hobbies</h2>
     <div class="hobbies-grid">
       <div class="hobby-card coding">
-        <h3>💻 Coding</h3>
+        <h3><i class="fa-solid fa-laptop-code" style="color:#3cb371"></i> Coding</h3>
         <p>I love building web apps, experimenting with new technologies, and creating projects that challenge my problem-solving skills.</p>
       </div>
       <div class="hobby-card chess">
-        <h3>♟️ Chess</h3>
+        <h3><i class="fa-solid fa-chess-king" style="color:#facc15"></i> Chess</h3>
         <p>Chess sharpens my mind and strategic thinking. I enjoy playing online tournaments and analyzing my games for improvement.</p>
       </div>
       <div class="hobby-card movies">
-        <h3>🎬 Movies</h3>
+        <h3><i class="fa-solid fa-clapperboard" style="color:#06b6d4"></i> Movies</h3>
         <p>I’m passionate about movies — from thrillers to classics, cinema inspires me and helps me unwind.</p>
       </div>
       <div class="hobby-card anime">
-        <h3>🌀 Anime</h3>
+        <h3><i class="fa-solid fa-wand-sparkles" style="color:#f97316"></i>Anime</h3>
         <p>Anime fuels my creativity and storytelling imagination, with series that combine art, emotion, and action.</p>
       </div>
     </div>
@@ -206,24 +208,53 @@
     <!-- EXPERIENCE -->
     <section class="section experience reveal" id="experience" aria-label="Experience">
       <h2>Experience</h2>
-      <article class="xp-card card">
-        <div class="xp-meta">
-          <h3>YellowDotAfrica — Frontend Intern</h3>
-          <p class="muted"><span>Jun–Dec 2025</span> • <span>Lagos, Nigeria (Hybrid)</span></p>
-        </div>
-        <ul class="xp-points">
-          <li>Implemented responsive UI components in vanilla JS/CSS with WCAG AA focus.</li>
-          <li>Optimized images and caching; improved Lighthouse Performance on key pages.</li>
-          <li>Collaborated with design to standardize spacing/typography tokens across pages.</li>
-        </ul>
-        <div class="badges">
-          <span class="badge">HTML</span>
-          <span class="badge">CSS</span>
-          <span class="badge">JavaScript</span>
-          <span class="badge">React</span>
-        </div>
-      </article>
+<article class="xp-card card">
+  <div class="xp-meta">
+    <h3>YellowDotAfrica — Frontend Intern</h3>
+    <p class="muted"><span>Jun–Dec 2025</span> • <span>Lagos, Nigeria (Hybrid)</span></p>
+  </div>
+
+  <ul class="xp-points">
+    <li>Built and styled responsive web pages using HTML, CSS, and vanilla JavaScript.</li>
+    <li>Improved site load speed by optimizing images, scripts, and browser caching.</li>
+    <li>Worked closely with the design team to keep layouts, colors, and spacing consistent across pages.</li>
+    <li>Explored React basics by recreating small components and testing simple UI interactions.</li>
+  </ul>
+
+  <div class="badges">
+    <span class="badge">HTML</span>
+    <span class="badge">CSS</span>
+    <span class="badge">JavaScript</span>
+    <span class="badge">React (Beginner)</span>
+  </div>
+</article>
+
+
+
+<article class="xp-card card">
+  <div class="xp-meta">
+    <h3>Cool Microfinance Bank — IT Intern</h3>
+    <p class="muted"><span>Oct–Dec 2025</span> • <span>Lagos, Nigeria</span></p>
+  </div>
+
+  <ul class="xp-points">
+    <li>Configured and secured SSH access to virtual machines, managing user roles and file permissions.</li>
+    <li>Diagnosed and resolved network connectivity and server access issues using command-line tools.</li>
+    <li>Assisted in maintaining internal systems, ensuring smooth software deployment and workstation setup.</li>
+  </ul>
+
+  <div class="badges">
+    <span class="badge">Linux</span>
+    <span class="badge">Command Line</span>
+    <span class="badge">Networking</span>
+    <span class="badge">System Administration</span>
+  </div>
+</article>
+
     </section>
+
+
+    
 
     <!-- PROJECTS -->
     <section class="section projects reveal" id="work" aria-label="Featured Projects">
@@ -241,7 +272,7 @@
         <p>Chess.com rating: <strong id="ratingNum">2060</strong> • Fupre Chess Club</p> -->
 
 
-        <p>Play my mini web games below.</p>
+       <!-- <p>Play my mini web games below.</p>
 <div class="game-panels">
 <article class="card game-card" aria-label="Chess Adventure">
   <h3>Chess Adventure</h3>
@@ -261,7 +292,7 @@
     <a class="btn" href="games/tactical-rain/tactical-rain.html" target="_blank" rel="noopener">Open Fullscreen</a>
   </div>
 </article>
-<!-- <article class="card game-card" aria-label="Escape Code">
+ <article class="card game-card" aria-label="Escape Code">
   <h3>Escape Code</h3>
   <div class="game-embed">
     <iframe src="games/escape-code/index.html" title="Escape Code" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe>
@@ -269,7 +300,7 @@
   <div class="game-actions">
     <a class="btn" href="games/escape-code/index.html" target="_blank" rel="noopener">Open Fullscreen</a>
   </div>
-</article> -->
+</article> 
 
       </div>
         <article class="card" aria-label="Recent games and rating timeline">
@@ -281,8 +312,8 @@
           </div>
         </article>
       </div>
-      <!-- <p class="small-note">Data loads from <code>data/chess_games.json</code>. See README for live API hooks (Chess.com/Lichess).</p> -->
-    </section>
+       <p class="small-note">Data loads from <code>data/chess_games.json</code>. See README for live API hooks (Chess.com/Lichess).</p> 
+    </section>-->
 
     <!-- SKILLS -->
     <section class="section skills reveal" id="skills" aria-label="Skills">
@@ -302,7 +333,7 @@
         <div class="skill-col">
           <h3>Chess</h3>
           <ul class="skill-list">
-            <li><span aria-hidden="true">♟</span> Tactics — pattern speed & accuracy</li>
+            <li><span aria-hidden="true"><i class="fa-solid fa-chess-king" style="color:#facc15"></i></span> Tactics — pattern speed & accuracy</li>
             <li><span aria-hidden="true">📚</span> Openings — English, Scandinavian</li>
             <li><span aria-hidden="true">🏁</span> Endgames — rook and minor piece technique</li>
             <li><span aria-hidden="true">🧠</span> Calculation — candidate moves & pruning</li>

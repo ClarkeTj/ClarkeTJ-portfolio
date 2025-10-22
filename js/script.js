@@ -6,39 +6,64 @@
   /* Year */
   $("#year") && ($("#year").textContent = new Date().getFullYear());
 
-  /* Theme toggle with persistence */
-  const THEME_KEY = "tc_theme_light";
-  const themeToggle = $("#themeToggle");
-  const setLight = (isLight) => {
-    document.documentElement.classList.toggle("light", !!isLight);
-    if (themeToggle) {
-      themeToggle.setAttribute("aria-pressed", !!isLight);
-      themeToggle.textContent = isLight ? "🌙" : "☀";
-    }
-    try { localStorage.setItem(THEME_KEY, isLight ? "1" : "0"); } catch {}
-  };
-  setLight((typeof localStorage !== "undefined" && localStorage.getItem(THEME_KEY) === "1"));
-  themeToggle?.addEventListener("click", () => setLight(!document.documentElement.classList.contains("light")));
+/* Theme toggle with persistence (Font Awesome Icons) */
+const THEME_KEY = "tc_theme_light";
+const themeToggle = $("#themeToggle");
 
-  /* Sticky header shadow */
-  const header = $(".site-header");
-  const onScroll = () => { if (!header) return; header.classList.toggle("scrolled", window.scrollY > 8); };
-  onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
+const setLight = (isLight) => {
+  document.documentElement.classList.toggle("light", !!isLight);
 
-  /* Mobile nav toggle */
-  const navToggle = $(".nav-toggle");
-  const navmenu = $("#navmenu");
-  navToggle?.addEventListener("click", () => {
-    const open = navmenu?.classList.toggle("open");
-    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-    navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-  });
-  navmenu?.addEventListener("click", (e) => {
-    if (e.target.tagName === "A" && navmenu.classList.contains("open")) {
-      navmenu.classList.remove("open");
-      navToggle?.setAttribute("aria-expanded", "false");
-    }
-  });
+  if (themeToggle) {
+    themeToggle.setAttribute("aria-pressed", !!isLight);
+
+    // use Font Awesome icons instead of emojis
+    themeToggle.innerHTML = isLight
+      ? '<i class="fa-solid fa-moon"></i>'
+      : '<i class="fa-solid fa-sun"></i>';
+  }
+
+  try {
+    localStorage.setItem(THEME_KEY, isLight ? "1" : "0");
+  } catch {}
+};
+
+// initialize based on saved preference
+setLight(
+  typeof localStorage !== "undefined" &&
+    localStorage.getItem(THEME_KEY) === "1"
+);
+
+// toggle on click
+themeToggle?.addEventListener("click", () =>
+  setLight(!document.documentElement.classList.contains("light"))
+);
+
+/* Sticky header shadow */
+const header = $(".site-header");
+const onScroll = () => {
+  if (!header) return;
+  header.classList.toggle("scrolled", window.scrollY > 8);
+};
+onScroll();
+window.addEventListener("scroll", onScroll, { passive: true });
+
+/* Mobile nav toggle */
+const navToggle = $(".nav-toggle");
+const navmenu = $("#navmenu");
+
+navToggle?.addEventListener("click", () => {
+  const open = navmenu?.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+});
+
+navmenu?.addEventListener("click", (e) => {
+  if (e.target.tagName === "A" && navmenu.classList.contains("open")) {
+    navmenu.classList.remove("open");
+    navToggle?.setAttribute("aria-expanded", "false");
+  }
+});
+
 
   /* Reveal on scroll */
   const revealEls = $$(".reveal");
@@ -66,6 +91,7 @@
     "// Hello, I'm Clarke-Efayena Tejiri.",
     "// Web Developer • 400L Computer Science student • Fupre Chess Club Asst. Captain",
     "// Chess.com rating: 2076",
+    "// Lichess rating: 2000",
     " " ,
     "const mindset = {",
     "  coding: true, chess: true",
